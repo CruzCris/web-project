@@ -1,0 +1,6 @@
+¿Qué falta?
+
+- Sesiones para no entrar a todas las páginas
+- CSS
+- Todo lo de admin
+- Arreglar lo de NO STOCK

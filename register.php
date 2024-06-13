@@ -33,14 +33,23 @@ if(isset($_SESSION["user"])){
             if(empty($nom) OR empty($pat) OR empty($mat) OR empty($cel) OR empty($email) OR empty($pass) OR empty($pass1)){
                 array_push($errors,"Todos los campos son obligatorios");
             }
+            if(!ctype_alpha($nom) OR !ctype_alpha($pat) OR !ctype_alpha($mat)){
+                array_push($errors,"Los campos nombre, paterno y materno solo deben contener letras");
+            }
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                 array_push($errors,"El correo no es válido");
             }
             if(strlen($pass)<8){
-                array_push($errors,"La longitud de la contraseña debe ser mínimo de 8");
+                array_push($errors,"La longitud de la contraseña debe ser mínimo de 8 caracteres");
             }
             if($pass!==$pass1){
-                array_push($errors,"Las contraseñas deben de coincidir");
+                array_push($errors,"Ambas contraseñas deben de coincidir");
+            }
+            if(!ctype_digit($cel)){
+                array_push($errors,"El campo celular solo debe contener números");
+            }
+            if(strlen($cel)!=10){
+                array_push($errors,"El número de celular debe de tener 10 dígitos");
             }
 
             require_once "database.php";

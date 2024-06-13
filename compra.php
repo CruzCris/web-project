@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+if(!isset($_SESSION['idCliente'])){
+    header("Location: login.php");
+    exit();
+}
+
 ob_start();
 
 require_once "librerias/dompdf/autoload.inc.php";
@@ -80,16 +86,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 $monedero = $row['monedero'];
-                //echo "<p>Mi Monedero A: $" . $monedero . "</p>";
-                echo "<p>Dinero Restante en Monedero: $" . ($monedero - $total) . "</p>";
 
-                // Actualizamos el monedero del cliente
-                $query = "UPDATE cliente SET monedero = $monedero - $total WHERE idCliente = '$idCliente'";
-                mysqli_query($conn, $query);
+                // Verificamos si el cliente tiene suficiente dinero en su monedero
+                if ($monedero < $total) {
+                    echo "<p>No tienes suficiente dinero en tu monedero para realizar la compra</p>";
+                    exit();
+                }else{
+                    //echo "<p>Mi Monedero A: $" . $monedero . "</p>";
+                    echo "<p>Dinero Restante en Monedero: $" . ($monedero - $total) . "</p>";
 
-                // Actualizamos el carrito del cliente
-                $query = "UPDATE carrito SET idVenta = '$randomString' WHERE idCliente = '$idCliente'";
-                mysqli_query($conn, $query);
+                    // Actualizamos el monedero del cliente
+                    $query = "UPDATE cliente SET monedero = $monedero - $total WHERE idCliente = '$idCliente'";
+                    mysqli_query($conn, $query);
+
+                    // Actualizamos el carrito del cliente
+                    $query = "UPDATE carrito SET idVenta = '$randomString' WHERE idCliente = '$idCliente'";
+                    mysqli_query($conn, $query);
+                }
+                
             }
         } else {
             //echo "No se encontraron resultados";

@@ -4,3 +4,6 @@
 - CSS
 - Todo lo de admin
 - Arreglar lo de NO STOCK
+- Monedero insuficiente
+- Validación formularios
+- Mismo celular?

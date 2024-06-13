@@ -1,9 +1,18 @@
 <?php
 session_start();
+/*if(!isset($_SESSION['from_index'])){
+    header("Location: login.php");
+    exit();
+}
 if(isset($_SESSION["idCliente"])) {
     $idCliente = $_SESSION["idCliente"];
     //echo "ID del cliente: " . $idCliente;
+}*/
+if(!isset($_SESSION['idCliente'])){
+    header("Location: login.php");
+    exit();
 }
+$idCliente = $_SESSION["idCliente"];
 ?>
 
 <!DOCTYPE html>

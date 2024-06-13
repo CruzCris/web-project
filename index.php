@@ -7,6 +7,8 @@ if(isset($_SESSION["idCliente"])) {
     $idCliente = $_SESSION["idCliente"];
     $_SESSION["idCliente"] = $idCliente;
 }
+
+$_SESSION['from_index'] = true;
 ?>
 
 <!DOCTYPE html>

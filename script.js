@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const productCard = document.createElement('div');
                 productCard.classList.add('product-card');
                 productCard.innerHTML = `
-                    <img src="${product.thumbnail}" alt="${product.title}">
+                    <a href="producto.php?productId=${product.id}"><img src="${product.thumbnail}" alt="${product.title}"></a>
                     <h2>${product.title}</h2>
                     <p>${product.description}</p>
                     <p>$${product.price}</p>

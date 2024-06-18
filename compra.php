@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<tr>";
             echo "<td>" . $row['cantidad'] . "</td>";
             echo "<td>" . $row['titulo'] . "</td>";
-            echo "<td>" . $row['precio'] . "</td>";
+            echo "<td>$" . $row['precio'] . "</td>";
             echo "<td>" . $row['descuento'] . "%</td>";
             echo "</tr>";
         }
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $total = $row['total'];
-            $total = number_format($total, 3);
+            $total = number_format($total, 2);
             echo "Total: $" . $total;
 
             //Obtenemos el valor actual del monedero del cliente

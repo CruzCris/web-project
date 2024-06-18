@@ -1,18 +1,14 @@
 ¿Qué falta?
 
-- Sesiones para no entrar a todas las páginas
 - CSS
 - Todo lo de admin
-    - Productos más vendidos
     - Categorías más vendidas
-    - Stock disponible
-    - Ingresos globales
     - Ingresos por producto
 - Arreglar lo de NO STOCK
 - Monedero insuficiente
-- Validación formularios
 - Mismo celular?
 - Página de producto independiente
+- Error comprando Rolex
 
 Admins:
     - juanf@gmail.com / juan123*

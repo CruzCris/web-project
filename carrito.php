@@ -82,7 +82,7 @@ $idCliente = $_SESSION["idCliente"];
             echo "<tr>";
             echo "<td>" . $row['cantidad'] . "</td>";
             echo "<td>" . $row['titulo'] . "</td>";
-            echo "<td>" . $row['precio'] . "</td>";
+            echo "<td>$" . $row['precio'] . "</td>";
             echo "<td>" . $row['descuento'] . "%</td>";
             echo "<td><button class='icon-button' id='delete-" . $row['idProducto'] . "'><svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-trash' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.5' stroke='#2c3e50' fill='none' stroke-linecap='round' stroke-linejoin='round'>
                         <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
@@ -109,7 +109,7 @@ $idCliente = $_SESSION["idCliente"];
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $total = $row['total'];
-            $total = number_format($total, 3);
+            $total = number_format($total, 2);
             echo "Total: $" . $total;
         } else {
             //echo "No se encontraron resultados";

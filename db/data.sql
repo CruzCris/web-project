@@ -124,33 +124,10 @@ insert into usuario (email,contrasena,nombre,paterno,materno,celular,idRol) valu
 insert into usuario (email,contrasena,nombre,paterno,materno,celular,idRol) values ("gerardo_j123@gmail.com","gerry975*","Gerardo","Sandoval","Calderon","5538105782",2);
 select * from usuario;
 
-update usuario set idRol = 1 where email = 'juanf@gmail.com';
-
-insert into admin (email) values ("juanf@gmail.com");
-	
+insert into admin (email) values ("jorge_perez@gmail.com");
 select * from admin;
 
 insert into cliente (email,monedero) values ("emilia123@gmail.com",10000);
 insert into cliente (email,monedero) values ("gerardo_j123@gmail.com",10000);
 select * from cliente;
 
-delete from cliente where idCliente = 4;
-
-select * from venta;
-select * from carrito;
-select * from producto where idProducto = 55;
-
-SELECT carrito.idProducto, producto.titulo, COUNT(*) as cantidadVendida
-FROM venta
-JOIN carrito ON venta.idVenta = carrito.idVenta JOIN producto ON carrito.idProducto = producto.idProducto
-WHERE venta.idVenta IS NOT NULL
-GROUP BY carrito.idProducto;
-
-SELECT producto.titulo, SUM(carrito.cantidad) as cantidadVendida
-FROM venta
-JOIN carrito ON venta.idVenta = carrito.idVenta 
-JOIN producto ON carrito.idProducto = producto.idProducto
-WHERE venta.idVenta IS NOT NULL
-GROUP BY carrito.idProducto
-ORDER BY cantidadVendida DESC
-LIMIT 5;

@@ -27,19 +27,19 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== "yes") {
         </nav>
     </header>
     <div class="grafica1" style="width: 800px; height: 800px; display: flex; justify-content: center; align-items: center;">
-        <canvas id="productos"></canvas>
+        <canvas id="productos" width="400px" height="300px"></canvas>
     </div>
     <div class="grafica2" style="width: 800px; height: 800px; display: flex; justify-content: center; align-items: center;">
-        <canvas id="categorias"></canvas>
+        <canvas id="categorias" width="400px" height="300px"></canvas>
     </div>
     <div class="grafica3" style="width: 800px; height: 800px; display: flex; justify-content: center; align-items: center;">
-        <canvas id="stock"></canvas>
+        <canvas id="stock" width="1000px" height="700px"></canvas>
     </div>
     <div class="grafica4" style="width: 800px; height: 800px; display: flex; justify-content: center; align-items: center;">
-        <canvas id="ingresosGlobales"></canvas>
+        <canvas id="ingresosGlobales" width="400px" height="300px"></canvas>
     </div>
     <div class="grafica5" style="width: 800px; height: 800px; display: flex; justify-content: center; align-items: center;">
-        <canvas id="ingresosPorProducto"></canvas>
+        <canvas id="ingresosPorProducto" width="400px" height="300px"></canvas>
     </div>
     <script src="js/graficas.js"></script>
 </body>

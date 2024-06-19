@@ -67,3 +67,11 @@ main {
     text-decoration: none;
     cursor: pointer;
 }
+
+.grafica2{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

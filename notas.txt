@@ -1,9 +1,6 @@
 ¿Qué falta?
 
 - CSS
-- Todo lo de admin
-    - Categorías más vendidas
-    - Ingresos por producto
 - Arreglar lo de NO STOCK
 - Monedero insuficiente
 - Mismo celular?
@@ -16,4 +13,4 @@ Admins:
 Clientes:
     - david@gmail.com / david123*
     - carlitos@gmail.com / carlos123*
-    - carmne@gmail.com / carmen123*
+    - carmen@gmail.com / carmen123*

@@ -131,3 +131,34 @@ insert into cliente (email,monedero) values ("emilia123@gmail.com",10000);
 insert into cliente (email,monedero) values ("gerardo_j123@gmail.com",10000);
 select * from cliente;
 
+-- Top 5 productos más vendidos
+SELECT producto.titulo, SUM(carrito.cantidad) as cantidadVendida
+FROM venta
+JOIN carrito ON venta.idVenta = carrito.idVenta 
+JOIN producto ON carrito.idProducto = producto.idProducto
+WHERE venta.idVenta IS NOT NULL
+GROUP BY carrito.idProducto
+ORDER BY cantidadVendida DESC
+LIMIT 5;
+
+-- Top 5 categorías más vendidas
+SELECT ca.categoria, SUM(c.cantidad) AS cantidad
+FROM carrito c
+JOIN producto p ON c.idProducto = p.idProducto JOIN categoria ca ON p.idCategoria = ca.idCategoria
+WHERE c.idVenta IS NOT NULL
+GROUP BY ca.categoria
+ORDER BY cantidad DESC
+LIMIT 5;
+
+-- Ingresos globales de la tienda
+SELECT SUM(c.cantidad) AS cantidad, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
+FROM carrito c
+JOIN producto p ON c.idProducto = p.idProducto
+WHERE c.idVenta IS NOT NULL;
+
+-- Ingresos por producto
+SELECT p.titulo, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
+FROM carrito c
+JOIN producto p ON c.idProducto = p.idProducto
+WHERE c.idVenta IS NOT NULL
+GROUP BY p.idProducto;

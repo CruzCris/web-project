@@ -20,6 +20,19 @@ foreach($result1 as $row){
     $data1[] = $row;
 }
 
+$result2 = $mysqli->query("SELECT ca.categoria, SUM(c.cantidad) AS cantidad
+FROM carrito c
+JOIN producto p ON c.idProducto = p.idProducto JOIN categoria ca ON p.idCategoria = ca.idCategoria
+WHERE c.idVenta IS NOT NULL
+GROUP BY ca.categoria
+ORDER BY cantidad DESC
+LIMIT 5");
+
+$data2 = array();
+foreach($result2 as $row){
+    $data2[] = $row;
+}
+
 $result3 = $mysqli->query("SELECT titulo, stock FROM producto");
 
 $data3 = array();
@@ -37,8 +50,19 @@ foreach($result4 as $row){
     $data4[] = $row;
 }
 
+$result5 = $mysqli->query("SELECT p.titulo, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
+FROM carrito c
+JOIN producto p ON c.idProducto = p.idProducto
+WHERE c.idVenta IS NOT NULL
+GROUP BY p.idProducto");
+
+$data5 = array();
+foreach($result5 as $row){
+    $data5[] = $row;
+}
+
 // Devolver los datos en formato JSON
 //echo json_encode($data);
-echo json_encode(array('data1' => $data1, 'data3' => $data3, 'data4' => $data4))
+echo json_encode(array('data1' => $data1, 'data2' => $data2,'data3' => $data3, 'data4' => $data4, 'data5' => $data5));
 
 ?>

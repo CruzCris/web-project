@@ -9,8 +9,29 @@ fetch('data.php')
                         datasets: [{
                             label: 'Top 5 productos más vendidos',
                             data: data.data1.map(item => item.cantidadVendida), // eje Y
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(104, 149, 140, 0.8)',
+                            borderColor: 'rgba(104, 149, 140, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                const categorias = document.getElementById('categorias').getContext('2d');
+                new Chart(categorias, {
+                    type: 'bar',
+                    data: {
+                        labels: data.data2.map(item => item.categoria), // eje X
+                        datasets: [{
+                            label: 'Top 5 categorias más vendidas',
+                            data: data.data2.map(item => item.cantidad), // eje Y
+                            backgroundColor: 'rgba(134, 67, 25, 0.8)',
+                            borderColor: 'rgba(134, 67, 25, 1)',
                             borderWidth: 1
                         }]
                     },
@@ -30,8 +51,8 @@ fetch('data.php')
                         datasets: [{
                             label: 'Stock de productos',
                             data: data.data3.map(item => item.stock), // eje Y
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(209, 220, 15, 0.8)',
+                            borderColor: 'rgba(209, 220, 15, 1)',
                             borderWidth: 1
                         }]
                     },
@@ -51,8 +72,29 @@ fetch('data.php')
                         datasets: [{
                             label: 'Ingresos Globales',
                             data: data.data4.map(item => item.total), // eje Y
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(8, 8, 74, 0.8)',
+                            borderColor: 'rgba(8, 8, 74, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                const ingresosPorProducto = document.getElementById('ingresosPorProducto').getContext('2d');
+                new Chart(ingresosPorProducto, {
+                    type: 'bar',
+                    data: {
+                        labels: data.data5.map(item => item.titulo), // eje X
+                        datasets: [{
+                            label: 'Ingresos por Producto',
+                            data: data.data5.map(item => item.total), // eje Y
+                            backgroundColor: 'rgba(74, 8, 72, 0.8)',
+                            borderColor: 'rgba(74, 8, 72, 1)',
                             borderWidth: 1
                         }]
                     },

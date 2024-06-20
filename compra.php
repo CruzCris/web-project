@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "SELECT c.idCliente, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
         FROM carrito c
         JOIN producto p ON c.idProducto = p.idProducto
-        WHERE c.idCliente = '$idCliente'
+        WHERE c.idCliente = '$idCliente' AND idVenta IS NULL
         GROUP BY c.idCliente;";
 
         $result = mysqli_query($conn, $query);

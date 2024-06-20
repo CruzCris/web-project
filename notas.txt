@@ -1,7 +1,6 @@
 ¿Qué falta?
 
 - CSS
-- Arreglar lo de NO STOCK
 - Monedero insuficiente
 - Mismo celular?
 - Página de producto independiente

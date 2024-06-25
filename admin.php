@@ -36,9 +36,12 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== "yes") {
         <canvas id="stock" width="1000px" height="700px"></canvas>
     </div>
     <div class="grafica4" style="width: 800px; height: 800px; display: flex; justify-content: center; align-items: center;">
-        <canvas id="ingresosGlobales" width="400px" height="300px"></canvas>
+        <canvas id="stock2" width="1000px" height="700px"></canvas>
     </div>
     <div class="grafica5" style="width: 800px; height: 800px; display: flex; justify-content: center; align-items: center;">
+        <canvas id="ingresosGlobales" width="400px" height="300px"></canvas>
+    </div>
+    <div class="grafica6" style="width: 800px; height: 800px; display: flex; justify-content: center; align-items: center;">
         <canvas id="ingresosPorProducto" width="400px" height="300px"></canvas>
     </div>
     <script src="js/graficas.js"></script>

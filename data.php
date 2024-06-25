@@ -33,36 +33,43 @@ foreach($result2 as $row){
     $data2[] = $row;
 }
 
-$result3 = $mysqli->query("SELECT titulo, stock FROM producto");
+$result3 = $mysqli->query("SELECT titulo, stock FROM producto LIMIT 50");
 
 $data3 = array();
 foreach($result3 as $row){
     $data3[] = $row;
 }
 
-$result4 = $mysqli->query("SELECT SUM(c.cantidad) AS cantidad, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
-FROM carrito c
-JOIN producto p ON c.idProducto = p.idProducto
-WHERE c.idVenta IS NOT NULL");
+$result4 = $mysqli->query("SELECT titulo, stock FROM producto LIMIT 50 OFFSET 50");
 
 $data4 = array();
 foreach($result4 as $row){
     $data4[] = $row;
 }
 
-$result5 = $mysqli->query("SELECT p.titulo, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
+$result5 = $mysqli->query("SELECT SUM(c.cantidad) AS cantidad, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
 FROM carrito c
 JOIN producto p ON c.idProducto = p.idProducto
-WHERE c.idVenta IS NOT NULL
-GROUP BY p.idProducto");
+WHERE c.idVenta IS NOT NULL");
 
 $data5 = array();
 foreach($result5 as $row){
     $data5[] = $row;
 }
 
+$result6 = $mysqli->query("SELECT p.titulo, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
+FROM carrito c
+JOIN producto p ON c.idProducto = p.idProducto
+WHERE c.idVenta IS NOT NULL
+GROUP BY p.idProducto");
+
+$data6 = array();
+foreach($result6 as $row){
+    $data6[] = $row;
+}
+
 // Devolver los datos en formato JSON
 //echo json_encode($data);
-echo json_encode(array('data1' => $data1, 'data2' => $data2,'data3' => $data3, 'data4' => $data4, 'data5' => $data5));
+echo json_encode(array('data1' => $data1, 'data2' => $data2,'data3' => $data3, 'data4' => $data4, 'data5' => $data5, 'data6' => $data6));
 
 ?>

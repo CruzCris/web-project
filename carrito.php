@@ -151,7 +151,6 @@ $idCliente = $_SESSION["idCliente"];
                         <li class="nav-item"><a class="nav-link active text-danger" aria-current="page" href="logout.php">Cerrar sesión</a></li>
                         
                     </ul>
-                    <form class="d-flex">
                 </div>
             </div>
         </nav>
@@ -235,19 +234,17 @@ $idCliente = $_SESSION["idCliente"];
             $total = number_format($total, 2);
             echo "<div class='clearfix'>";
             //echo "<p id='total'>Total: $" . $total . "</p>";
-        } else {
+        } else {    
             //echo "No se encontraron resultados";
         }
-
-        //echo "<form method='POST' action='compra.php' target='_blank'>";
         echo "<form method='POST' action='compra.php'>";
         echo "<input type='hidden' name='idCliente' value='$idCliente'>";
-        echo "<button class='btn btn-success hint-text' id='comprarBtn' type='submit'>Comprar</button>";
+        echo "<button class='btn btn-success hint-text' type='submit'>Comprar</button>";
+        echo "<div class='btn  hint-text' >Total: <b>$" . $total; "</b></div>";
         echo "</form>";
-        //echo "<button id='vaciarCarritoBtn' type='button'>Vaciar carrito</button>";
+        echo "</div>";
     } else {
         echo "<b>Carrito de compras vacío. Agrega productos desde la página de inicio!</b>";
-        echo "<b id='vacio'></b>";
     }
 
     // Cerramos la conexión a la bd
@@ -256,7 +253,6 @@ $idCliente = $_SESSION["idCliente"];
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-    
     // Eliminar un producto del carrito
     $(document).ready(function(){
         $(".icon-button").click(function(){

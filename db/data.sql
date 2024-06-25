@@ -131,6 +131,10 @@ insert into cliente (email,monedero) values ("emilia123@gmail.com",10000);
 insert into cliente (email,monedero) values ("gerardo_j123@gmail.com",10000);
 select * from cliente;
 
+select * from carrito where idCliente=5;
+
+select * from venta;
+
 -- Top 5 productos más vendidos
 SELECT producto.titulo, SUM(carrito.cantidad) as cantidadVendida
 FROM venta

@@ -1,10 +1,11 @@
 ¿Qué falta?
 
-- CSS
 - Monedero insuficiente
-- Mismo celular?
-- Página de producto independiente
-- Error comprando Rolex
+- Gráficas de stock
+- Función de compra
+
+- Modal de carrito vaciado
+- Modal de producto eliminado
 
 Admins:
     - juanf@gmail.com / juan123*

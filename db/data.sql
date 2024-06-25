@@ -131,6 +131,8 @@ insert into cliente (email,monedero) values ("emilia123@gmail.com",10000);
 insert into cliente (email,monedero) values ("gerardo_j123@gmail.com",10000);
 select * from cliente;
 
+update cliente set monedero=10 where idCliente=4;
+
 select * from carrito where idCliente=5;
 
 select * from venta;

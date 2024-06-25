@@ -233,16 +233,25 @@ $idCliente = $_SESSION["idCliente"];
             $total = $row['total'];
             $total = number_format($total, 2);
             echo "<div class='clearfix'>";
-            //echo "<p id='total'>Total: $" . $total . "</p>";
         } else {    
             //echo "No se encontraron resultados";
         }
-        echo "<form method='POST' action='compra.php'>";
+        if($monedero < $total){
+            echo "<div class='hint-text'>No tienes suficiente saldo en tu monedero para realizar la compra</div>";
+        }else{
+            echo "<form method='POST' action='compra.php'>";
+            echo "<input type='hidden' name='idCliente' value='$idCliente'>";
+            echo "<button class='btn btn-success hint-text' type='submit'>Comprar</button>";
+            echo "<div class='btn  hint-text' >Total: <b>$" . $total; "</b></div>";
+            echo "</form>";
+            echo "</div>";
+        }
+        /*echo "<form method='POST' action='compra.php'>";
         echo "<input type='hidden' name='idCliente' value='$idCliente'>";
         echo "<button class='btn btn-success hint-text' type='submit'>Comprar</button>";
         echo "<div class='btn  hint-text' >Total: <b>$" . $total; "</b></div>";
         echo "</form>";
-        echo "</div>";
+        echo "</div>";*/
     } else {
         echo "<b>Carrito de compras vacío. Agrega productos desde la página de inicio!</b>";
     }

@@ -12,10 +12,38 @@ if(isset($_SESSION["user"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" />
 </head>
 <body>
-    <div class="container">
+    <div class="container login">
+        <div class="px-5 py-5 p-lg-0 bg-surface-secondary">
+            <div class="d-flex justify-content-center align-items-center min-vh-100">
+                <div class="col-12 col-md-9 col-lg-7 offset-md-4 min-h-lg-screen d-flex flex-column justify-content-center py-lg-16 px-lg-20 position-relative">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-9 col-xl-6 mx-auto ms-xl-0">
+                            <div class="mt-10 mt-lg-5 mb-6 d-flex align-items-center d-lg-block">
+                                <span class="d-inline-block d-lg-block h1 mb-lg-6 me-3">👋</span>
+                                <h1 class="ls-tight font-bolder h2">
+                                ¡Bienvenido!
+                                </h1>
+                            </div>
+                            <form action="login.php" method="post">
+                                <div class="mb-5">
+                                    <label class="form-label" for="email">Correo</label>
+                                    <input type="email" class="form-control form-control-muted" id="email" name="email">
+                                </div>
+                                <div class="mb-5">
+                                    <label class="form-label" for="password">Contraseña</label>
+                                    <input type="password" class="form-control form-control-muted" name="pass" id="password" autocomplete="current-password">
+                                </div>
+                                <div>
+                                    <input type="submit" name="login" class="btn btn-primary w-full" value="Iniciar Sesión"> 
+                                </div>
+                            </form>
+                            <div class="my-6">
+                                <small>¿No tienes cuenta?</small>
+                                <a href="register.php" class="text-warning text-sm font-semibold">Crear cuenta</a>
+                            </div>
         <?php
         if(isset($_POST["login"])){
             $email = $_POST["email"];
@@ -77,19 +105,10 @@ if(isset($_SESSION["user"])){
             }
         }
         ?>
-        <form action="login.php" method="post">
-            <div class="form-group">
-                <input type="email" placeholder="Escribe tu correo electrónico." name="email" class="form-control">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="password" placeholder="Escribe tu contraseña." name="pass" class="form-control">
-            </div>
-            <div class="form-btn">
-                <input type="submit" value="Login" name="login" class="btn btn-primary">
-            </div>
-        </form>
-        <div>
-            <p>¿No estás registrado? <a href="register.php">Registrarme</a></p>
         </div>
     </div>
 </body>

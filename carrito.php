@@ -110,18 +110,24 @@ $idCliente = $_SESSION["idCliente"];
             $row = mysqli_fetch_assoc($result);
             $total = $row['total'];
             $total = number_format($total, 2);
-            echo "Total: $" . $total;
+            //echo "Total: $" . $total;
+            echo "<p id='total'>Total: $" . $total . "</p>";
         } else {
             //echo "No se encontraron resultados";
         }
 
+        //echo "<form method='POST' action='compra.php' target='_blank'>";
         echo "<form method='POST' action='compra.php'>";
         echo "<input type='hidden' name='idCliente' value='$idCliente'>";
-        echo "<button type='submit'>Comprar</button>";
+        echo "<button id='comprarBtn' type='submit'>Comprar</button>";
         echo "</form>";
-        //echo "<button>Comprar</button>";
+        //echo "<form method='POST' action='vaciarCarrito.php'>";
+        //echo "<input type='hidden' name='idCliente' value='$idCliente'>";
+        echo "<button id='vaciarCarritoBtn' type='button'>Vaciar carrito</button>";
+        //echo "</form>";
     } else {
-        echo "Carrito de compras vacío. Agrega productos desde la página de inicio!";
+        //echo "Carrito de compras vacío. Agrega productos desde la página de inicio!";
+        echo "<p id='vacio'>Carrito de compras vacío. Agrega productos desde la página de inicio!</p>";
     }
 
     // Cerramos la conexión a la bd
@@ -130,6 +136,8 @@ $idCliente = $_SESSION["idCliente"];
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+    
+    // Eliminar un producto del carrito
     $(document).ready(function(){
         $(".icon-button").click(function(){
             var idCliente = "<?php echo $idCliente; ?>";
@@ -175,6 +183,53 @@ $idCliente = $_SESSION["idCliente"];
                 }
             });
         });
+
+        // Vaciar carrito
+        $("#vaciarCarritoBtn").click(function(){
+            var idCliente = "<?php echo $idCliente; ?>";
+            //console.log(idCliente);
+            $.ajax({
+                url: 'vaciarCarrito.php',
+                type: 'post',
+                data: {idCliente: idCliente},
+                success: function(response){
+                    if(response == "Carrito vaciado exitosamente"){
+                        // Eliminamos la tabla
+                        $("table").remove();
+                        $("#total").remove();
+                        $("#vaciarCarritoBtn").remove();
+                        $("#comprarBtn").remove();
+                        
+                        if($("#vacio").length){
+                            $("#vacio").text("Carrito de compras vacío. Agrega productos desde la página de inicio!");
+                        } else {
+                            $("body").append("<p id='vacio'>Carrito de compras vacío. Agrega productos desde la página de inicio!</p>");
+                        }
+
+                        //  echo "<p id='vacio'>Carrito de compras vacío. Agrega productos desde la página de inicio!</p>";
+
+                        let modal = document.getElementById('modal');
+                        let modalText = document.getElementById('modal-text');
+
+                        modalText.textContent = "Carrito vaciado exitosamente";
+
+                        modal.style.display = "block";
+
+                        let closeButton = document.querySelector('.close-button');
+
+                        closeButton.onclick = function() {
+                            modal.style.display = "none";
+                        }
+
+                        setTimeout(() => {
+                            modal.style.display = "none";
+                        }, 2000);
+                    }else{
+                        alert(response);
+                    }
+                }
+            })
+        })
     });
     </script>
 </body>

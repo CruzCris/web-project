@@ -131,15 +131,6 @@ insert into cliente (email,monedero) values ("emilia123@gmail.com",10000);
 insert into cliente (email,monedero) values ("gerardo_j123@gmail.com",10000);
 select * from cliente;
 
-select * from carrito;
-
--- Cantidad total del carrito
-SELECT c.idCliente, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
-FROM carrito c
-JOIN producto p ON c.idProducto = p.idProducto
-WHERE c.idCliente = 1
-GROUP BY c.idCliente;
-
 -- Top 5 productos más vendidos
 SELECT producto.titulo, SUM(carrito.cantidad) as cantidadVendida
 FROM venta

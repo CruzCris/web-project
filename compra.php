@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     echo "<h1>Ticket de Compra</h1>";
+    echo "<p>Fecha de compra: " . date("Y-m-d") . "</p>";
     echo "<p>Número de Ticket: " . $randomString . "</p>";
 
     // Insertamos la venta en la base de datos
@@ -102,6 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Actualizamos el carrito del cliente
                     $query = "UPDATE carrito SET idVenta = '$randomString' WHERE idCliente = '$idCliente'";
                     mysqli_query($conn, $query);
+
+                    echo "<p>Gracias por tu compra!</p>";
                 }
                 
             }

@@ -6,13 +6,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const productList = document.getElementById('product-list');
             products.forEach(product => {
                 const productCard = document.createElement('div');
-                productCard.classList.add('product-card');
+                
                 productCard.innerHTML = `
-                    <a href="producto.php?productId=${product.id}"><img src="${product.thumbnail}" alt="${product.title}"></a>
-                    <h2>${product.title}</h2>
-                    <p>${product.description}</p>
-                    <p>$${product.price}</p>
-                    <button onclick="addToCart(${product.id})">Agregar al Carrito</button>
+                 <div class="card h-100">
+                            
+                            <!-- Product image-->
+                            <img class="card-img-top" src="${product.thumbnail}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">${product.title}</h5>
+                                    <!-- Product price-->
+                                    
+                                    $${product.price}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="addToCart(${product.id})">Add to cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                
                 `;
                 productList.appendChild(productCard);
             });
@@ -44,8 +60,6 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
 function addToCart(productId) {
     // Lógica para agregar el producto al carrito
     
-    //var idCliente = "<?php echo $_SESSION['idCliente']; ?>";
-    //console.log(productId);
     fetch('addProduct.php', {
         method: 'POST',
         headers: {
@@ -61,7 +75,12 @@ function addToCart(productId) {
             // Obtener el modal y el texto del modal
             let modal = document.getElementById('modal');
             let modalText = document.getElementById('modal-text');
-
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'Producto agregado al carrito',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
             // Establecer el texto del modal
             modalText.textContent = "Producto agregado al carrito";
 
@@ -81,6 +100,12 @@ function addToCart(productId) {
                 modal.style.display = "none";
             }, 2000);
         }else if(data.trim() == "No hay stock"){
+            Swal.fire({
+                title: '¡Error!',
+                text: 'No hay stock disponible para este producto.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
             //alert("No hay stock disponible");
             // Obtener el modal y el texto del modal
             let modal = document.getElementById('modal');

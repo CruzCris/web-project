@@ -279,29 +279,8 @@ $idCliente = $_SESSION["idCliente"];
                         // Elimina la fila de la tabla
                         $(button).closest('tr').remove();
 
-                        // Muestra un mensaje al usuario
-                        // Obtener el modal y el texto del modal
-                        let modal = document.getElementById('modal');
-                        let modalText = document.getElementById('modal-text');
-
-                        // Establecer el texto del modal
-                        modalText.textContent = "Producto eliminado del carrito";
-
-                        // Mostrar el modal
-                        modal.style.display = "block";
-
-                        // Obtener el botón de cerrar
-                        let closeButton = document.querySelector('.close-button');
-
-                        // Cerrar el modal cuando se hace clic en el botón de cerrar
-                        closeButton.onclick = function() {
-                            modal.style.display = "none";
-                        }
-
-                        // Cerrar el modal después de un tiempo
-                        setTimeout(() => {
-                            modal.style.display = "none";
-                        }, 2000);
+                        // Actualizamos la pagina
+                        location.reload();
                     } else {
                         alert(response);
                     }
@@ -324,25 +303,6 @@ $idCliente = $_SESSION["idCliente"];
                         $("#total").remove();
                         $("#vaciarCarritoBtn").remove();
                         $("#comprarBtn").remove();
-
-                        //  echo "<p id='vacio'>Carrito de compras vacío. Agrega productos desde la página de inicio!</p>";
-
-                        let modal = document.getElementById('modal');
-                        let modalText = document.getElementById('modal-text');
-
-                        modalText.textContent = "Carrito vaciado exitosamente";
-
-                        modal.style.display = "block";
-
-                        let closeButton = document.querySelector('.close-button');
-
-                        closeButton.onclick = function() {
-                            modal.style.display = "none";
-                        }
-
-                        setTimeout(() => {
-                            modal.style.display = "none";
-                        }, 2000);
 
                         // Actualizamos la pagina
                         location.reload();

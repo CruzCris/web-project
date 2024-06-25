@@ -150,6 +150,12 @@ GROUP BY ca.categoria
 ORDER BY cantidad DESC
 LIMIT 5;
 
+-- Stock de productos 1-50
+SELECT titulo, stock FROM producto LIMIT 50;
+
+-- Stock de productos 51-100
+SELECT titulo, stock FROM producto LIMIT 50 OFFSET 50;
+
 -- Ingresos globales de la tienda
 SELECT SUM(c.cantidad) AS cantidad, SUM(c.cantidad * p.precio * (1 - p.descuento / 100)) AS total
 FROM carrito c

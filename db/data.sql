@@ -133,7 +133,7 @@ select * from cliente;
 
 update cliente set monedero=10 where idCliente=4;
 
-select * from carrito where idCliente=5;
+select * from carrito where idCliente=6;
 
 select * from venta;
 

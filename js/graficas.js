@@ -130,8 +130,67 @@ fetch('data.php')
                     data: {
                         labels: data.data3.map(item => item.titulo), // eje X
                         datasets: [{
-                            label: 'Productos en Stock',
+                            label: 'Productos en Stock 1-50',
                             data: data.data3.map(item => item.stock), // eje Y
+                            backgroundColor: 'rgba(209, 220, 15, 0.8)',
+                            borderColor: 'rgba(209, 220, 15, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Stock Actual de la Tienda',
+                                font:{
+                                    size: 18,
+                                    weight: 'bold',
+                                    family: 'Helvetica Neue'
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Stock',
+                                    color: 'black',
+                                    font: {
+                                        size: 12,
+                                        weight: 'bold',
+                                        family: 'Times New Roman'
+                                    }
+                                }
+                            },
+                            x: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Productos',
+                                    color: 'black',
+                                    font: {
+                                        size: 12,
+                                        weight: 'bold',
+                                        family: 'Times New Roman'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                const stock2 = document.getElementById('stock2').getContext('2d');
+                new Chart(stock2, {
+                    type: 'bar',
+                    data: {
+                        labels: data.data4.map(item => item.titulo), // eje X
+                        datasets: [{
+                            label: 'Productos en Stock 51-100',
+                            data: data.data4.map(item => item.stock), // eje Y
                             backgroundColor: 'rgba(209, 220, 15, 0.8)',
                             borderColor: 'rgba(209, 220, 15, 1)',
                             borderWidth: 1
@@ -187,10 +246,10 @@ fetch('data.php')
                 new Chart(ingresosGlobales, {
                     type: 'bar',
                     data: {
-                        labels: data.data4.map(item => item.cantidad), // eje X
+                        labels: data.data5.map(item => item.cantidad), // eje X
                         datasets: [{
                             label: 'Ventas Totales',
-                            data: data.data4.map(item => item.total), // eje Y
+                            data: data.data5.map(item => item.total), // eje Y
                             backgroundColor: 'rgba(8, 8, 74, 0.8)',
                             borderColor: 'rgba(8, 8, 74, 1)',
                             borderWidth: 1
@@ -246,10 +305,10 @@ fetch('data.php')
                 new Chart(ingresosPorProducto, {
                     type: 'bar',
                     data: {
-                        labels: data.data5.map(item => item.titulo), // eje X
+                        labels: data.data6.map(item => item.titulo), // eje X
                         datasets: [{
                             label: 'Ventas Totales',
-                            data: data.data5.map(item => item.total), // eje Y
+                            data: data.data6.map(item => item.total), // eje Y
                             backgroundColor: 'rgba(74, 8, 72, 0.8)',
                             borderColor: 'rgba(74, 8, 72, 1)',
                             borderWidth: 1
